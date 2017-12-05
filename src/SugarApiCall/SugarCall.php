@@ -1,6 +1,7 @@
 <?php
 
 namespace SugarApiCall;
+use \Exception;
 
 class SugarCall {
 
