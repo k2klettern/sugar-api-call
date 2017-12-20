@@ -3,13 +3,13 @@
 /*
 * Define all the static Constants
 */
-  
-define( 'SUGAR_API_URL', 'your api url');
+
+define( 'SUGAR_API_URL', 'http://www.prakton-crm.com/pruebas/unir/dev-1/rest/v10');
 define ( 'SUGAR_LOGGING', 1 );
-define ( 'SUGAR_USERNAME', 'your api user' );
-define ( 'SUGAR_PASSWORD', 'your api pass' );
-define ( 'SUGAR_ENDPOINT', 'your endpoint' );
-define ( 'SUGAR_CLIENT_ID', 'your client id' );
+define ( 'SUGAR_USERNAME', 'api_user' );
+define ( 'SUGAR_PASSWORD', 'Unir2016@' );
+define ( 'SUGAR_ENDPOINT', '/unir/import' );
+define ( 'SUGAR_CLIENT_ID', 'sugar' );
 define ( 'SUGAR_METHOD_I', 'POST' );
 define ( 'SUGAR_METHOD_U', 'PUT' );
 define ( 'SUGAR_METHOD_G', 'GET' );
