@@ -1,7 +1,8 @@
 <?php
 
 namespace SugarApiCall;
-use \Exception;
+use Exception;
+use CURLFile;
 
 class SugarCall {
 
@@ -26,12 +27,66 @@ class SugarCall {
             return $result;
 	}
 
+	public function uploadAnImageFile ($id = null, $path = null) {
+
+		$url = SUGAR_API_URL . "/Contacts/$id/file/perfil_c";
+
+		$file_arguments = array(
+			"format" => "sugar-html-json",
+			"delete_if_fails" => true,
+			"oauth_token" => $this->token,
+		);
+
+		$file_arguments['perfil_c'] = new \CURLFile($path);
+
+		$curl_request = curl_init($url);
+		curl_setopt($curl_request, CURLOPT_POST, 1);
+		curl_setopt($curl_request, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_0);
+		curl_setopt($curl_request, CURLOPT_HEADER, false);
+		curl_setopt($curl_request, CURLOPT_SSL_VERIFYPEER, 0);
+		curl_setopt($curl_request, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($curl_request, CURLOPT_FOLLOWLOCATION, 0);
+		curl_setopt($curl_request, CURLOPT_HTTPHEADER, array(
+			"oauth-token: {$this->token}"
+		));
+
+		curl_setopt($curl_request, CURLOPT_POSTFIELDS, $file_arguments);
+
+		$curl_response = curl_exec($curl_request);
+
+		curl_close($curl_request);
+
+		return $curl_response;
+
+	}
+
+	public function sanitize_endpoint($endpoint = null) {
+			if(!preg_match_all('/^\/(.*?)\/$/', $endpoint, $matches, PREG_SET_ORDER, 0)) {
+				$endpoint = str_replace('/', '', $endpoint);
+				$endpoint = "/" . $endpoint . "/";
+			}
+
+			return $endpoint;
+	}
+
+	public function sanitize_varurls($id = null) {
+			if(!preg_match_all('/^\?(.*?)$/', $id, $matches, PREG_SET_ORDER, 0)) {
+				$id = str_replace('?', '', $id);
+				$id = "?" . $id;
+			}
+
+		return $id;
+	}
+
 	public function getObjectSugar( $endpoint = false, $id = false ) {
+		$endpoint = $this->sanitize_endpoint($endpoint);
+		$id = $this->sanitize_varurls($id);
 		$filter       = "";
 		$sugar_object = false;
 		if ( ! $this->token ) {
 			$this->getAuthToken();
 		}
+
 
 		if ( $this->token ) {
 
@@ -60,11 +115,12 @@ class SugarCall {
 					break;
 				default:
 					$filter       = $id;
+
 					$sugar_object = $this->callRestAPI( SUGAR_METHOD_G, SUGAR_API_URL . $endpoint, $this->token, $filter );
 			}
 		} else {
 
-			throw new Exception( 'Error en la generación del token  ' );
+			throw new \Exception( 'Error en la generación del token  ' );
 
 		}
 
@@ -110,10 +166,10 @@ class SugarCall {
 				break;
 
 			case 'GET':
-//				print_r( $url );
+
 				if ( $data ) {
 					$url .= $data;
-
+					print_r( $url );
 				}
 
 				break;
