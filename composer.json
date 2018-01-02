@@ -18,7 +18,9 @@
     "autoload":{
 		"psr-0": {
 	    	"SugarApiCall": "src/",
-		"ERPIntegration": "src/"
+		"ERPIntegration": "src/",
+		"helpers" : "src/",
+		"PhpAmqpLib": "src/"
 		}
     }
 }
