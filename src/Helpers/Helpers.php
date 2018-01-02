@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Helpers\ErpIntegrationHelpers;
+namespace Helpers;
 
 /**
  * Class ErpIntegrationHelpers

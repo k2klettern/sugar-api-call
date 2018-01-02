@@ -8,7 +8,7 @@
 
 
 
-namespace ERPIntegration\ErpConsummer;
+namespace ERPIntegration;
 
 use ERPConsummer\src\ErpApiController as ErpApiController;
 use ERPConsummer\helpers\ErpIntegrationHelpers as ErpHelpers;

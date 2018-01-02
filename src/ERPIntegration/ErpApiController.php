@@ -8,7 +8,7 @@ Por cada nuevo endpoint, se generará una conexión (si es necesario) y un méto
 */
 
 
-namespace ERPIntegration\ErpApiController;
+namespace ERPIntegration;
 
 class ErpApiController {
 
