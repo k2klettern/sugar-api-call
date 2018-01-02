@@ -10,12 +10,15 @@
         },
         {
 	        "name": "Javi",
-            "email": "javier.fajardo79@gmail.com",
+            "email": "javier.fajardo79@gmail.com"
         }
     ],
     "minimum-stability": "dev",
     "require": {
 	    "php": ">=5.3.0"
+    },
+    "suggest": {
+        "ext-sockets": "Use AMQPSocketConnection"
     },
     "autoload":{
 		"psr-0": {
