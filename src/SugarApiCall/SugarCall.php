@@ -1,6 +1,6 @@
 <?php
 
-namespace SugarApiCall;
+namespace SugarApiCall\SugarApiCall;
 use Exception;
 use CURLFile;
 

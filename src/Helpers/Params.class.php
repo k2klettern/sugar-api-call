@@ -1,6 +1,6 @@
 <?php
 
-namespace ParamsClass;
+namespace Helpers\ParamsClass;
 
 class Params{
 
