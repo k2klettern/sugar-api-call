@@ -3,11 +3,14 @@
 
 namespace Helpers;
 
+
+
 /**
  * Class ErpIntegrationHelpers
  * @package ERPConsummer\helpers
  */
 class ErpIntegrationHelpers{
+
 
 
     /**
@@ -96,7 +99,7 @@ class ErpIntegrationHelpers{
      */
     public static function getLocalizacion($idLoc=null){
 
-        $sugarCall = new SugarCall();
+        $sugarCall = new \SugarApiCall\SugarCall();
 
         $headers = array(
             "Accept: application/json"
@@ -131,7 +134,10 @@ class ErpIntegrationHelpers{
 
                 $local['provincia']['nombre'] = $item['Name'];
 
-                $tmp_object = $sugarCall->callRestAPI( 'GET',SUGAR_API_URL.'/prkt_Ciudades/','?filter[0][name]='.$local['provincia']['nombre'] );
+                print_r($local);
+
+                $tmp_object = $sugarCall->callRestAPI( 'GET',SUGAR_API_URL.'/prkt_Ciudades/',false,'?filter[0][name]='.$local['provincia']['nombre'] );
+
                 if (DEBUG){
                     echo "\n\r------PRKT CIUDADES------\n\r";
                     print_r($tmp_object);

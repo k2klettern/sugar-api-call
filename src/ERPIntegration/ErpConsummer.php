@@ -10,8 +10,7 @@
 
 namespace ERPIntegration;
 
-use ErpApiController;
-use \Helpers\ErpIntegrationHelpers;
+use \Helpers\ErpIntegrationHelpers as Helpers;
 
 /**
  * Class ErpConsummer
@@ -85,16 +84,18 @@ class ErpConsummer
 
         $this->msg = array_merge( $this->msg,$ErpController->object );
 
-        $array_loc = ErpHelpers::getLocalizacion($this->msg['Facturacion']['TerritorioIdIntegracion']);
+        $array_loc = Helpers::getLocalizacion($this->msg['Facturacion']['TerritorioIdIntegracion']);
+
+        print_r($array_loc);exit;
         //Oportunidad
         $this->normalized = array();
         $this->normalized['opportunity']['id']                      = $this->msg['CuponIdIntegracion'];
         $this->normalized['opportunity']['date_pago_reserva_c']     = $this->msg['Vencimiento']['FechaHora'];
         $this->normalized['opportunity']['bi_medio_pago_c']         = $this->msg['FormaPagoIdIntegracion'];
-        $this->normalized['opportunity']['medio_pago_c']         	  = ErpHelpers::normalizeMedioPago($this->msg['FormaPagoIdIntegracion']);
+        $this->normalized['opportunity']['medio_pago_c']         	= Helpers::normalizeMedioPago($this->msg['FormaPagoIdIntegracion']);
         $this->normalized['opportunity']['type_currency_ c']        = $this->msg['MonedaPago'];
         $this->normalized['opportunity']['currency_id']             = $this->msg['MonedaPago'];
-        $this->normalized['opportunity']['forma_pago_c']            = ErpHelpers::normalizeFormaPago($this->msg['TerminoPagoIdIntegracion']);
+        $this->normalized['opportunity']['forma_pago_c']            = Helpers::normalizeFormaPago($this->msg['TerminoPagoIdIntegracion']);
         $this->normalized['opportunity']['client_email_c']          = $this->msg['ObtenerAlumnoPoridAlumnoResult']['Respuesta']['datosAlumno']['Email'];
         $this->normalized['opportunity']['phone_cliente_c']         = $this->msg['ObtenerAlumnoPoridAlumnoResult']['Respuesta']['datosAlumno']['TlfMovilPrefijo'].$this->msg['ObtenerAlumnoPoridAlumnoResult']['Respuesta']['datosAlumno']['TlfMovilNumero'];
         $this->normalized['opportunity']['id_reserva']              = $this->msg['IdReserva'];
@@ -111,7 +112,7 @@ class ErpConsummer
         $this->normalized['client']['last_name']                    = $this->msg['ObtenerAlumnoPoridAlumnoResult']['Respuesta']['datosAlumno']['Apellido_1'] . ' ' . $this->msg['ObtenerAlumnoPoridAlumnoResult']['Respuesta']['datosAlumno']['Apellido_2'];
         $this->normalized['client']['lugar_nacimiento_c']           = $array_loc['pais']['Name'];
         $this->normalized['client']['birthdate']                    = $this->msg['ObtenerAlumnoPoridAlumnoResult']['Respuesta']['datosAlumno']['FechaNacimiento'];
-        $this->normalized['client']['document_type_c']              = ErpHelpers::normalizeTipoDoc($this->msg['Facturacion']['TipoDocumentoIdentidadIdIntegracion']);
+        $this->normalized['client']['document_type_c']              = Helpers::normalizeTipoDoc($this->msg['Facturacion']['TipoDocumentoIdentidadIdIntegracion']);
         $this->normalized['client']['document_number_c']            = $this->msg['Facturacion']['DocumentoIdentidad'];
         $this->normalized['client']['phone_mobile']                 = $this->msg['ObtenerAlumnoPoridAlumnoResult']['Respuesta']['datosAlumno']['TlfMovilPrefijo'].' '.$this->msg['ObtenerAlumnoPoridAlumnoResult']['Respuesta']['datosAlumno']['TlfMovilNumero'];
         $this->normalized['client']['client_address_c']             = $this->msg['ObtenerAlumnoPoridAlumnoResult']['Respuesta']['datosAlumno']['Direccion'];
@@ -124,7 +125,7 @@ class ErpConsummer
 
         if (DEBUG) {
             echo "\n\r\n\rnormalized\n\r\n\r";
-            print_r($normalized);
+            print_r($this->normalized);
             echo "\n\r-----------------------\n\r";
         }
 
