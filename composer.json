@@ -7,15 +7,25 @@
         {
             "name": "eric",
             "email": "k2klettern@gmail.com"
+        },
+        {
+	        "name": "Javi",
+            "email": "javier.fajardo79@gmail.com"
         }
     ],
     "minimum-stability": "dev",
     "require": {
 	    "php": ">=5.3.0"
     },
+    "suggest": {
+        "ext-sockets": "Use AMQPSocketConnection"
+    },
     "autoload":{
 		"psr-0": {
-	    	"SugarApiCall": "src/"
+	    	"SugarApiCall\\": "src/",
+		    "ERPIntegration\\": "src/",
+		    "Helpers\\" : "src/",
+		    "PhpAmqpLib\\": "src/"
 		}
     }
 }
