@@ -8,10 +8,7 @@
 
 
 
-namespace ERPConsummer\src;
-
-include_once 'class.ErpApiController.php';
-include_once "/var/www/ERPConsummer/helpers/helpers.php";
+namespace ErpConsummer;
 
 use ERPConsummer\src\ErpApiController as ErpApiController;
 use ERPConsummer\helpers\ErpIntegrationHelpers as ErpHelpers;

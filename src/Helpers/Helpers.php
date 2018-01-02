@@ -1,10 +1,7 @@
 <?php
 
 
-namespace ERPConsummer\helpers;
-include_once ('/var/www/ERPConsummer/src/SugarApiCall.class.php');
-
-use ERPConsummer\src\SugarApiCall as SugarCall ;
+namespace ErpIntegrationHelpers;
 
 /**
  * Class ErpIntegrationHelpers

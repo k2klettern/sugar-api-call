@@ -6,8 +6,10 @@
     "authors": [
         {
             "name": "eric",
-            "email": "k2klettern@gmail.com",
-	    "name": "Javi",
+            "email": "k2klettern@gmail.com"
+        },
+        {
+	        "name": "Javi",
             "email": "javier.fajardo79@gmail.com",
         }
     ],
@@ -18,9 +20,9 @@
     "autoload":{
 		"psr-0": {
 	    	"SugarApiCall": "src/",
-		"ERPIntegration": "src/",
-		"helpers" : "src/",
-		"PhpAmqpLib": "src/"
+		    "ERPIntegration\\": "src/",
+		    "Helpers\\" : "src/",
+		    "PhpAmqpLib\\": "src/"
 		}
     }
 }

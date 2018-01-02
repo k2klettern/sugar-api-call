@@ -1,6 +1,6 @@
 <?php
 
-namespace ERPConsummer\src;
+namespace ParamsClass;
 
 class Params{
 

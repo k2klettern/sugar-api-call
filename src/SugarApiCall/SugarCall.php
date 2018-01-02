@@ -208,6 +208,7 @@ class SugarCall {
 			'client_id'  => SUGAR_CLIENT_ID,
 			'username'   => SUGAR_USERNAME,
 			'password'   => SUGAR_PASSWORD,
+            "client_secret"=> "",
 			'platform'   => 'api'
 		) );
 
